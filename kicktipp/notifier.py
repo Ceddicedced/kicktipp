@@ -8,8 +8,10 @@ from state_manager import ChangeInfo
 
 
 def get_webhook() -> DiscordWebhook:
+    if not os.getenv("WEBHOOK_URL"):
+        raise Exception("WEBHOOK_URL not set")
     webhook = DiscordWebhook(
-        url=os.getenv("WEBHOOK_URL"),
+        url=os.getenv("WEBHOOK_URL"),  # type: ignore
         username="KickTipp",
         avatar_url="https://www.kicktipp.de/assets/apple-touch-icon.0879fba1.png",
     )
@@ -54,34 +56,34 @@ class DiscordNotifier:
 
         if new.nr == 1 and old.nr != 1:
             title = "👑👑👑"
-            info = "Neuer Erster!"
+            desc = "Neuer Erster!"
         elif new.nr == 12 and old.nr != 12:
             title = "👎👎👎"
-            info = "Dabei sein ist alles!"
+            desc = "Dabei sein ist alles!"
         elif new.win_percent > old.win_percent:
             title = "🔥🔥🔥"
-            info = "Da brennt die Luft! Was ein Tipper!"
+            desc = "Da brennt die Luft! Was ein Tipper!"
         elif new.nr < old.nr:
             title = "🎉🎉🎉"
-            info = "Aufstieg vom {old.nr} Platz!"
+            desc = "Aufstieg vom {old.nr} Platz!"
         elif new.bonus > old.bonus:
             title = "💰💰💰"
             diff = new.bonus - old.bonus
-            info = "Bonuspunkte! +{diff} Punkte!"
+            desc = "Bonuspunkte! +{diff} Punkte!"
         elif new.total_points > old.total_points:
             title = "🔼🔼🔼"
             diff = new.total_points - old.total_points
-            info = "Es gibt Puuuunkte! +{diff} Punkte!"
+            desc = "Es gibt Puuuunkte! +{diff} Punkte!"
         elif new.total_points < old.total_points:
             title = "🔽🔽🔽"
             diff = old.total_points - new.total_points
-            info = "Das war wohl nix! -{diff} Punkte!"
+            desc = "Das war wohl nix! -{diff} Punkte!"
         else:
             title = "🔔🔔🔔"
 
         embed = DiscordEmbed(
             title=title,
-            description=f"{info}",
+            description=f"{desc}",
             color=242424,
         )
         embed.set_author(name=f"{new.pos} - {new.name}")

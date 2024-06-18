@@ -1,11 +1,17 @@
 class Participant:
     def __init__(self, pos, name, day, bonus, win_percent, total_points):
-        self.pos = pos
-        self.name = name
-        self.day = day
-        self.bonus = bonus
-        self.win_percent = win_percent
-        self.total_points = total_points
+        self.pos: str = pos
+        self.name: str = name
+
+        self.day: int = self._to_int(day)
+        self.bonus: int = self._to_int(day)
+        self.win_percent: int = self._to_int(day)
+        self.total_points: int = self._to_int(day)
+
+    def _to_int(self, value):
+        if value == "-" or value == "":
+            return 0
+        return int(value)
 
     def __str__(self):
         return f"{self.pos}\t{self.name}\t{self.day}\t{self.bonus}\t{self.win_percent}\t{self.total_points}"
