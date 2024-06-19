@@ -1,0 +1,73 @@
+{
+    "neuer_erster": [
+      "Neuer Erster! Was für ein Aufstieg!",
+      "Ganz oben angekommen! Glückwunsch!",
+      "Jetzt bist du die Nummer eins!",
+      "König der Spitze!",
+      "Du hast den Thron erobert!",
+      "Erster Platz! Das ist sensationell!",
+      "Top of the world! Gut gemacht!",
+      "Du bist der Beste! Weiter so!"
+    ],
+    "neuer_letzter": [
+      "Dabei sein ist alles!",
+      "Kopf hoch, das nächste Mal wird besser!",
+      "Nicht verzagen, weiter wagen!",
+      "Der Letzte wird der Erste sein!",
+      "Mach weiter, gib nicht auf!",
+      "Das Ende ist nur der Anfang!",
+      "Nächste Runde wird besser!",
+      "Bleib dran, Erfolg kommt bald!"
+    ],
+    "neuer_sieg": [
+      "Da brennt die Luft! Was ein Tipper!",
+      "Gewinner! Du hast richtig getippt!",
+      "Perfekter Tipp! Glückwunsch zum Sieg!",
+      "Sieg! Du hast es geschafft!",
+      "Hervorragend! Ein echter Champion!",
+      "Dein Tipp war goldrichtig!",
+      "Du bist der Sieger! Super gemacht!",
+      "Treffer! Genau ins Schwarze!"
+    ],
+    "aufstieg": [
+      "Aufstieg vom {old_nr} Platz!",
+      "Weiter nach oben! Toller Aufstieg!",
+      "Du kletterst die Rangliste hoch!",
+      "Aufstieg geglückt!",
+      "Eine Stufe höher! Klasse Leistung!",
+      "Du bist auf dem Weg nach oben!",
+      "Platz um Platz nach oben!",
+      "Fantastischer Aufstieg!"
+    ],
+    "bonuspunkte": [
+      "Bonuspunkte! +{diff} Punkte!",
+      "Extra Punkte für dich! +{diff} Punkte!",
+      "Bonusrunde! Du hast +{diff} Punkte erhalten!",
+      "Bonuspunkte ergattert! +{diff} Punkte!",
+      "Zusatzpunkte! +{diff} Punkte!",
+      "Mehr Punkte! +{diff} Punkte für dich!",
+      "Du hast Bonuspunkte verdient! +{diff} Punkte!",
+      "Glückwunsch zu +{diff} Bonuspunkten!"
+    ],
+    "mehr_gesamtpunkte": [
+      "Es gibt Puuuunkte! +{diff} Punkte!",
+      "Mehr Punkte! +{diff} Punkte!",
+      "Punkte gesammelt! +{diff} Punkte!",
+      "Punkte für dich! +{diff} Punkte!",
+      "Du hast großartig gepunktet! +{diff} Punkte!",
+      "Erfolgreich! +{diff} Punkte mehr!",
+      "Gut gemacht! +{diff} Punkte!",
+      "Super Leistung! +{diff} Punkte!"
+    ],
+    "weniger_gesamtpunkte": [
+      "Das war wohl nix! -{diff} Punkte!",
+      "Punktverlust! -{diff} Punkte!",
+      "Weniger Punkte! -{diff} Punkte!",
+      "Punkte verloren! -{diff} Punkte!",
+      "Schade, das hat nicht geklappt! -{diff} Punkte!",
+      "Verloren, aber nicht vergessen! -{diff} Punkte!",
+      "Rückschlag! -{diff} Punkte!",
+      "Ein kleines Tief! -{diff} Punkte!"
+    ]
+  }
+  

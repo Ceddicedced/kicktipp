@@ -1,4 +1,6 @@
 from datetime import datetime
+import json
+import random
 from discord_webhook import DiscordWebhook, DiscordEmbed
 import os
 
@@ -54,33 +56,38 @@ class DiscordNotifier:
         old: Participant = info.old
         message: str = info.message
 
-        if new.nr == 1 and old.nr != 1:
+        def random_choice(key):
+            with open("messages.json", "r") as file:
+                messages = json.load(file)
+            return random.choice(messages[key])
+
+        if new.nr == 1 and old.nr != 1:  # Neuer Erster
             title = "👑👑👑"
-            desc = "Neuer Erster!"
-        elif new.nr == 12 and old.nr != 12:
+            desc = random_choice("neuer_erster")
+        elif new.nr == 12 and old.nr != 12:  # Neuer Letzter
             title = "👎👎👎"
-            desc = "Dabei sein ist alles!"
-        elif new.win_percent > old.win_percent:
+            desc = random_choice("neuer_letzter")
+        elif new.win_percent > old.win_percent:  # Neuer Sieg / Richtig getippt
             title = "🔥🔥🔥"
-            desc = "Da brennt die Luft! Was ein Tipper!"
-        elif new.nr < old.nr:
+            desc = random_choice("neuer_sieg")
+        elif new.nr < old.nr:  # Aufstieg
             title = "🎉🎉🎉"
-            desc = "Aufstieg vom {old.nr} Platz!"
-        elif new.bonus > old.bonus:
+            desc = random_choice("aufstieg").format(old_nr=old.nr)
+        elif new.bonus > old.bonus:  # Bonuspunkte
             title = "💰💰💰"
             diff = new.bonus - old.bonus
-            desc = "Bonuspunkte! +{diff} Punkte!"
-        elif new.total_points > old.total_points:
+            desc = random_choice("bonuspunkte").format(diff=diff)
+        elif new.total_points > old.total_points:  # Mehr Gesamtpunkte
             title = "🔼🔼🔼"
             diff = new.total_points - old.total_points
-            desc = "Es gibt Puuuunkte! +{diff} Punkte!"
-        elif new.total_points < old.total_points:
+            desc = random_choice("mehr_gesamtpunkte").format(diff=diff)
+        elif new.total_points < old.total_points:  # Weniger Gesamtpunkte
             title = "🔽🔽🔽"
             diff = old.total_points - new.total_points
-            desc = "Das war wohl nix! -{diff} Punkte!"
+            desc = random_choice("weniger_gesamtpunkte").format(diff=diff)
         else:
             title = "🔔🔔🔔"
-
+            desc = "Keine Änderung"
         embed = DiscordEmbed(
             title=title,
             description=f"{desc}",

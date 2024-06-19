@@ -4,13 +4,17 @@ class Participant:
         self.name: str = name
 
         self.day: int = self._to_int(day)
-        self.bonus: int = self._to_int(day)
-        self.win_percent: int = self._to_int(day)
-        self.total_points: int = self._to_int(day)
+        self.bonus: int = self._to_int(bonus)
+        self.win_percent: int = self._to_int(win_percent)
+        self.total_points: int = self._to_int(total_points)
 
     def _to_int(self, value):
+        if isinstance(value, int):
+            return value
         if value == "-" or value == "":
             return 0
+        if "," in value:
+            value = value.split(",")[0]
         return int(value)
 
     def __str__(self):
