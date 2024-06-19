@@ -39,7 +39,15 @@ class Participant:
         }
 
     def __eq__(self, other):
-        return isinstance(other, Participant) and self.name == other.name
+        return (
+            isinstance(other, Participant)
+            and self.name == other.name
+            and self.pos == other.pos
+            and self.day == other.day
+            and self.bonus == other.bonus
+            and self.win_percent == other.win_percent
+            and self.total_points == other.total_points
+        )
 
     def __repr__(self) -> str:
         return f"Participant(pos={self.pos}, name={self.name}, day={self.day}, bonus={self.bonus}, win_percent={self.win_percent}, total_points={self.total_points})"

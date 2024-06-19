@@ -59,6 +59,16 @@
       "Gut gemacht! +{diff} Punkte!",
       "Super Leistung! +{diff} Punkte!"
     ],
+    "abstieg": [
+    "Abstieg vom {old_nr} Platz!",
+    "Rückschritt! Vom {old_nr} Platz abgestiegen.",
+    "Ein Rückschlag, aber nicht aufgeben!",
+    "Kopf hoch, der nächste Aufstieg kommt!",
+    "Ein Rückschritt ist nur eine Chance zum Comeback!",
+    "Platz verloren, aber nicht den Mut!",
+    "Der Abstieg ist hart, aber du schaffst das!",
+    "Nicht entmutigen lassen! Es geht wieder aufwärts!"
+  ],
     "weniger_gesamtpunkte": [
       "Das war wohl nix! -{diff} Punkte!",
       "Punktverlust! -{diff} Punkte!",

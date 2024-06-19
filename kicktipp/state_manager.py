@@ -123,7 +123,7 @@ def check_participants_changes(new_participants, old_participants):
     for new_participant in new_participants:
         for old_participant in old_participants:
             if new_participant.name == old_participant.name:
-                if new_participant.total_points != old_participant.total_points:
+                if new_participant != old_participant:
                     changes.append(
                         ChangeInfo(
                             old_participant,

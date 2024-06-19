@@ -12,6 +12,8 @@ from state_manager import (
     check_participants_changes,
 )
 
+VERSION = "0.1.2"
+
 # Load environment variables from .env file
 load_dotenv()
 
@@ -32,6 +34,7 @@ class MainApplication:
         return games, participants
 
     def first_run(self):
+        print(VERSION)
         games, participants = self.fetch_and_parse()
         for game in games:
             print(game)

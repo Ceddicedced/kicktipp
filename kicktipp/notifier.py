@@ -67,9 +67,6 @@ class DiscordNotifier:
         elif new.nr == 12 and old.nr != 12:  # Neuer Letzter
             title = "👎👎👎"
             desc = random_choice("neuer_letzter")
-        elif new.win_percent > old.win_percent:  # Neuer Sieg / Richtig getippt
-            title = "🔥🔥🔥"
-            desc = random_choice("neuer_sieg")
         elif new.nr < old.nr:  # Aufstieg
             title = "🎉🎉🎉"
             desc = random_choice("aufstieg").format(old_nr=old.nr)
@@ -77,6 +74,10 @@ class DiscordNotifier:
             title = "💰💰💰"
             diff = new.bonus - old.bonus
             desc = random_choice("bonuspunkte").format(diff=diff)
+        elif new.win_percent > old.win_percent:  # Neuer Sieg / Richtig getippt
+            title = "🔥🔥🔥"
+            desc = random_choice("neuer_sieg")
+
         elif new.total_points > old.total_points:  # Mehr Gesamtpunkte
             title = "🔼🔼🔼"
             diff = new.total_points - old.total_points
@@ -85,6 +86,9 @@ class DiscordNotifier:
             title = "🔽🔽🔽"
             diff = old.total_points - new.total_points
             desc = random_choice("weniger_gesamtpunkte").format(diff=diff)
+        elif new.nr > old.nr:  # Abstieg
+            title = "👎👎👎"
+            desc = random_choice("abstieg").format(old_nr=old.nr)
         else:
             title = "🔔🔔🔔"
             desc = "Keine Änderung"
