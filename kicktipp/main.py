@@ -69,7 +69,7 @@ class MainApplication:
                 )
                 if participant_changes:
                     for change_info in participant_changes:
-                        print(f"Participant Change: {change_info.message}")
+                        print(f"Participant Change: {change_info}")
                         embed = notifier.build_participant_message(change_info)
                         embeds.append(embed)
                 # self.state_manager.save_participants(participants)
