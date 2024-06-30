@@ -85,7 +85,11 @@ class MainApplication:
                 print(f"Error: {e}")
 
             # Wait for some seconds before checking again
-            time.sleep(30)
+            try:
+                time.sleep(30)
+            except KeyboardInterrupt:
+                print("Exiting...")
+                break
 
 
 if __name__ == "__main__":
