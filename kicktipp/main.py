@@ -12,7 +12,7 @@ from state_manager import (
     check_participants_changes,
 )
 
-VERSION = "0.1.2"
+VERSION = "0.1.3"
 
 # Load environment variables from .env file
 load_dotenv()
