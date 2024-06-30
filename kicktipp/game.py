@@ -63,8 +63,8 @@ class Game:
             date_time = cells[0].text.strip()
             home_team = cells[1].text.strip()
             away_team = cells[2].text.strip()
-            group = cells[3].text.strip()
-            result = cells[4].text.strip()
+            group = cells[3].text.strip() if len(cells) > 3 else None
+            result = cells[4].text.strip() if len(cells) > 4 else cells[3].text.strip()
             return cls(date_time, home_team, away_team, group, result)
         else:
             raise ValueError("Invalid row format for Game parsing")
