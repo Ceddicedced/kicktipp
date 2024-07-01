@@ -123,6 +123,13 @@ class DiscordNotifier:
 
             description = f"{team} hat ein Tor geschossen! 🥅\n {message}"
 
+            if new.result.endswith("n.V."):
+                title = "🕒🕒🕒"
+                description = "Nachspielzeit! ⏱️"
+            elif new.result.endswith("n.E."):
+                title = "🎯🎯🎯"
+                description = "Elfmeterschießen! ⚽"
+
             if (
                 new.home_score < old.home_score or new.away_score < old.away_score
             ):  # Tor wurde zurückgenommen
