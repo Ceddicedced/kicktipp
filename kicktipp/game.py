@@ -20,7 +20,9 @@ class Game:
     def away_score(self):
         if self.result == "-:-":
             return 0
-        return int(self.result.split(":")[1])
+        away = self.result.split(":")[1]
+        # replace all non-digit characters with an empty string
+        return int("".join(filter(str.isdigit, away)))
 
     def __str__(self):
         return f"{self.date_time}:\t {self.home_team} vs {self.away_team} ({self.group}) - Result: {self.result}"
