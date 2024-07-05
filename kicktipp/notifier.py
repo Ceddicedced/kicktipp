@@ -108,33 +108,35 @@ class DiscordNotifier:
         old: Game = info.old
         message = info.message
 
+        title = "⚽⚽⚽"
+        team = ""
+
         if new.result == "0:0" and old.result == "-:-":  # Spielstart
             title = "🔔🔔🔔"
             description = f"{old.home_team} vs {old.away_team} spielt jetzt!"
-        else:
-            title = "⚽⚽⚽"
-            team = ""
-            if new.home_score > old.home_score:  # Heimteam hat ein Tor geschossen
-                title = "🥅⚽⚽"
-                team = old.home_team
-            elif new.away_score > old.away_score:  # Auswärtsteam hat ein Tor geschossen
-                title = "⚽⚽🥅"
-                team = old.away_team
 
+        elif new.result.endswith("n.V.") and not old.result.endswith(
+            "n.V."
+        ):  # Verlängerung
+            title = "🕒🕒🕒"
+            description = "Nachspielzeit! ⏱️"
+        elif new.result.endswith("n.E.") and not old.result.endswith(
+            "n.E."
+        ):  # Elfmeterschießen
+            title = "🎯🎯🎯"
+            description = "Elfmeterschießen! ⚽"
+        elif new.home_score > old.home_score:  # Heimteam hat ein Tor geschossen
+            title = "🥅⚽⚽"
+            team = old.home_team
             description = f"{team} hat ein Tor geschossen! 🥅\n {message}"
-
-            if new.result.endswith("n.V."):
-                title = "🕒🕒🕒"
-                description = "Nachspielzeit! ⏱️"
-            elif new.result.endswith("n.E."):
-                title = "🎯🎯🎯"
-                description = "Elfmeterschießen! ⚽"
-
-            if (
-                new.home_score < old.home_score or new.away_score < old.away_score
-            ):  # Tor wurde zurückgenommen
-                title = "❌❌❌"
-                description = f"Tor wurde zurückgenommen! ❌\n {message}"
+        elif new.away_score > old.away_score:  # Auswärtsteam hat ein Tor geschossen
+            title = "⚽⚽🥅"
+            team = old.away_team
+        elif (
+            new.home_score < old.home_score or new.away_score < old.away_score
+        ):  # Tor wurde zurückgenommen
+            title = "❌❌❌"
+            description = f"Tor wurde zurückgenommen! ❌\n {message}"
 
         embed = DiscordEmbed(
             title=title,
@@ -143,7 +145,6 @@ class DiscordNotifier:
         )
         embed.set_author(name=f"{old.home_team} vs {old.away_team}")
         embed.set_footer(text=f"Ergebnis: {new.result}")
-        # 18.06.24 21:00 to datetime
         start_time = datetime.strptime(new.date_time, "%d.%m.%y %H:%M")
         # Offset by 2 hours
         start_time = start_time.replace(hour=start_time.hour - 2)
